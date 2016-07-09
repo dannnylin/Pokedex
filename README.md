@@ -1,4 +1,4 @@
-# Pokedex
+# Pokédex
 
 App that displays 718 pokemon using API endpoint from <a href="http://pokeapi.co">pokeapi.co</a>.
 <br/>
