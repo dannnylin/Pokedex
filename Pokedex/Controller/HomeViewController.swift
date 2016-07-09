@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
             musicPlayer = try AVAudioPlayer(contentsOfURL: NSURL(string: path)!)
             musicPlayer.prepareToPlay()
             musicPlayer.numberOfLoops = -1
-            musicPlayer.volume = 0.5
+            musicPlayer.volume = 0.18
             musicPlayer.play()
         } catch let err as NSError {
             print(err.debugDescription)
@@ -101,11 +101,19 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        return
+        let pokemon: Pokemon!
+        
+        if searching {
+            pokemon = filteredSource[indexPath.row]
+        } else {
+            pokemon = dataSource[indexPath.row]
+        }
+        
+        self.presentViewController(PokemonDetailViewController.create(pokemon), animated: true, completion: nil)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 110, height: 110)
+        return CGSize(width: 105, height: 105)
     }
 }
 
